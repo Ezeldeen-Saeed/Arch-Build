@@ -1,0 +1,5 @@
+set recolor true
+set recolor-lightcolor '#ffffff'
+set recolor-darkcolor '#000000'
+
+map <A-d> /home/ezooz/.config/zathura/toggle_color_scheme.sh 

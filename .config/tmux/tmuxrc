@@ -1,0 +1,17 @@
+# Set the prefix key to Mod (usually the Super/Windows key)
+set-option -g prefix Mod1  # Change Mod1 to Mod4 for Super/Windows key if necessary
+unbind C-b  # Unbind the default prefix
+
+# Create a new terminal
+bind Return new-window  # Mod + Return creates a new terminal
+
+# Switch focus between panes
+bind j select-pane -D  # Mod + j switches focus down
+bind k select-pane -U  # Mod + k switches focus up
+
+# Resize panes
+bind h resize-pane -L  # Mod + h resize left
+bind l resize-pane -R  # Mod + l resize right
+
+# Exit terminal
+bind -n M-q kill-pane  # Mod + Shift + q exits the current pane

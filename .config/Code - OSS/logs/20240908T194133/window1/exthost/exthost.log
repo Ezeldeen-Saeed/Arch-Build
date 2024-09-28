@@ -1,0 +1,20 @@
+2024-09-08 19:41:38.370 [info] Extension host with pid 5800 started
+2024-09-08 19:41:38.370 [info] Skipping acquiring lock for /home/ezooz/.config/Code - OSS/User/workspaceStorage/51424a86520d7dc8b57d80895203077f.
+2024-09-08 19:41:38.715 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-09-08 19:41:39.216 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-09-08 19:41:39.308 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-09-08 19:41:39.451 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-09-08 19:41:39.594 [info] Eager extensions activated
+2024-09-08 19:41:39.644 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-09-08 19:41:39.648 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-09-08 19:42:00.615 [info] Extension host terminating: renderer closed the MessagePort
+2024-09-08 19:42:00.624 [info] Extension host with pid 5800 exiting with code 0
+2024-09-08 19:42:02.653 [info] Extension host with pid 6639 started
+2024-09-08 19:42:02.729 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2024-09-08 19:42:02.750 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2024-09-08 19:42:02.915 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-09-08 19:42:03.265 [info] Eager extensions activated
+2024-09-08 19:42:03.308 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-09-08 19:42:03.314 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-09-08 19:42:17.809 [info] Extension host terminating: renderer closed the MessagePort
+2024-09-08 19:42:17.818 [info] Extension host with pid 6639 exiting with code 0

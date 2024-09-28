@@ -1,0 +1,45 @@
+2024-09-01 21:22:07.383 [info] Log level: Info
+2024-09-01 21:22:07.383 [info] Validating found git in: "git"
+2024-09-01 21:22:07.383 [info] Using git "2.46.0" from "git"
+2024-09-01 21:22:07.384 [info] > git rev-parse --show-toplevel [16ms]
+2024-09-01 21:22:07.384 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.392 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.392 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.399 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.399 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.408 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.408 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.416 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.416 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.424 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.424 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.433 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.433 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.440 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.440 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.448 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.448 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.456 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.456 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.465 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.465 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.474 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.474 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.482 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.482 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.490 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.490 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.498 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:07.498 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:07.505 [info] > git rev-parse --show-toplevel [1ms]
+2024-09-01 21:22:07.505 [info] fatal: not a git repository (or any of the parent directories): .git
+2024-09-01 21:22:11.292 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:11.292 [info] fatal: detected dubious ownership in repository at '/home/ezooz/src/dwm'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ezooz/src/dwm
+2024-09-01 21:22:14.600 [info] > git rev-parse --show-toplevel [2ms]
+2024-09-01 21:22:14.600 [info] fatal: detected dubious ownership in repository at '/home/ezooz/src/dwm'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ezooz/src/dwm

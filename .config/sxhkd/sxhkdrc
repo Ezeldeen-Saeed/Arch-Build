@@ -1,0 +1,50 @@
+super + Return
+	$TERMINAL
+
+super + w
+	$BROWSER
+
+super + d
+    dmenu_run   
+
+super + n
+    $TERMINAL -e nnn
+
+super + f
+    $TERMINAL -e fzf
+
+super + m
+    $HOME/voidBuild/bin/mount.sh
+
+# volume control
+XF86AudioRaiseVolume
+	$HOME/voidBuild/bin/volume-control.sh up
+XF86AudioLowerVolume
+	$HOME/voidBuild/bin/volume-control.sh down
+XF86AudioMute
+	$HOME/voidBuild/bin/volume-control.sh mute
+
+
+super + shift + BackSpace
+	$HOME/voidBuild/bin/exit.sh
+
+super + F5
+	$HOME/voidBuild/bin/toggle-touchpad-trackstick.sh
+
+super + shift + P
+	$HOME/voidBuild/bin/monitor-control.sh
+
+super + shift + M
+	$HOME/voidBuild/bin/mount.sh
+
+Print
+	maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+
+ctrl + Print
+	maim -s | xclip -selection clipboard -t image/png
+
+ctrl + shift + Print
+    maim -s $HOME/Pictures/Screenshots/screenshot_$(date +'%Y%m%d_%H%M%S').png
+
+super + shift + R
+    $HOME/voidBuild/bin/record-screen.sh

@@ -1,0 +1,18 @@
+2024-09-17 17:52:05.412 [info] Getting Manifest... vscodevim.vim
+2024-09-17 17:52:05.444 [info] Installing extension: vscodevim.vim {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"profileLocation":{"$mid":1,"external":"vscode-userdata:/home/ezooz/.vscode-oss/extensions/extensions.json","path":"/home/ezooz/.vscode-oss/extensions/extensions.json","scheme":"vscode-userdata"},"installOnlyNewlyAddedFromExtensionPack":true,"isApplicationScoped":false,"productVersion":{"version":"1.91.1","date":"2024-07-16T08:23:01.341Z"}}
+2024-09-17 17:52:07.153 [error] Could not load vsce-sign module Cannot find module '@vscode/vsce-sign'
+Require stack:
+- /usr/lib/code-oss/resources/app/out/bootstrap-amd.js
+- /usr/lib/code-oss/resources/app/out/bootstrap-fork.js
+- 
+2024-09-17 17:52:07.154 [info] Extension signature verification is not done: vscodevim.vim
+2024-09-17 17:52:07.260 [info] Extracted extension to file:///home/ezooz/.vscode-oss/extensions/vscodevim.vim-1.28.1: vscodevim.vim
+2024-09-17 17:52:07.268 [info] Renamed to /home/ezooz/.vscode-oss/extensions/vscodevim.vim-1.28.1
+2024-09-17 17:52:07.294 [info] Extension installed successfully: vscodevim.vim vscode-userdata:/home/ezooz/.vscode-oss/extensions/extensions.json
+2024-09-17 17:52:07.364 [error] [uncaught exception in sharedProcess]: Error: ENOENT: no such file or directory, stat '/home/ezooz/.vscode-oss/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/home/ezooz/.vscode-oss/extensions/extensions.json.vsctmp'
+    at h.create (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:19262)
+    at f (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:54:19372)
+    at P.hb (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:36571)
+    at P.stat (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:28919)
+    at async s.stat (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:59:14907)
+    at async V.vb (/usr/lib/code-oss/resources/app/out/vs/code/node/sharedProcess/sharedProcessMain.js:105:119283)

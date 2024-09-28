@@ -1,0 +1,11 @@
+2024-09-01 21:22:05.114 [info] Extension host with pid 29053 started
+2024-09-01 21:22:05.115 [info] Skipping acquiring lock for /home/ezooz/.config/Code - OSS/User/workspaceStorage/51424a86520d7dc8b57d80895203077f.
+2024-09-01 21:22:05.208 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+2024-09-01 21:22:05.276 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2024-09-01 21:22:05.357 [info] Eager extensions activated
+2024-09-01 21:22:05.379 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2024-09-01 21:22:05.384 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2024-09-01 21:22:07.107 [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+2024-09-01 21:22:11.470 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2024-09-01 21:22:23.077 [info] Extension host terminating: renderer closed the MessagePort
+2024-09-01 21:22:23.086 [info] Extension host with pid 29053 exiting with code 0

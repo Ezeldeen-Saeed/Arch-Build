@@ -1,0 +1,97 @@
+vim9script
+
+# Auto Closing Tag
+g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+g:closetag_emptyTags_caseSensitive = 1
+g:closetag_shortcut = '>'
+g:closetag_close_shortcut = '<leader>>'
+
+# Auto Pairs
+g:AutoPairsFlyMode = 1
+
+# Line Numbers
+set number
+set relativenumber
+
+# Mouse
+set mouse=a
+
+# Theme
+syntax on
+set termguicolors
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
+set laststatus=2
+
+# Cursorline highlight
+set cursorline
+set cursorcolumn
+highlight CursorLine guibg=#2b2b2b
+highlight CursorColumn guibg=#2b2b2b
+set hlsearch
+
+# Clipboard settings
+set clipboard=unnamedplus
+
+# Clipboard management with xclip
+# Ensure xclip is installed: sudo xbps-install xclip
+# Use xclip to manage clipboard operations
+const s_clip = 'xclip -selection clipboard'
+
+# Function to handle clipboard operations
+def ClipboardYank()
+    if executable('xclip')
+        call system(s_clip, @0)
+    endif
+enddef
+
+# Automatically copy yanked text to clipboard
+autocmd TextYankPost * if v:event.operator ==# 'y' | call ClipboardYank() | endif
+
+# Auto-closing
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap <expr> <CR> search('{\%#}', 'n') ? "\<CR>\<CR>\<Up>\<C-f>" : "\<CR>"
+
+# Spaces
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set autoindent
+
+# Plugins
+call plug#begin()
+  Plug 'preservim/nerdtree'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'Yggdroot/indentLine'
+  Plug 'itchyny/lightline.vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'alvan/vim-closetag'  
+  Plug 'junegunn/fzf.vim'
+  Plug 'honza/vim-snippets'
+call plug#end()
+
+# NerdTree
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+# Set localleader to .
+g:maplocalleader = "."
+
+# Splits navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+# Localleader key bindings
+nnoremap <localleader>w :w<CR>
+nnoremap <localleader>q :q<CR>
+nnoremap <localleader>n :NERDTree<CR>
+nnoremap <localleader>a ggVG
+nnoremap <localleader>q :q!<CR>
+nnoremap <localleader>n :NERDTree<CR>
+nnoremap <localleader>f :Files<CR>

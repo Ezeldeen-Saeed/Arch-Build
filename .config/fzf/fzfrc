@@ -1,0 +1,26 @@
+# Enable case-insensitive search by default
+export FZF_DEFAULT_OPTS="--ignore-case"
+
+# Show hidden files
+export FZF_DEFAULT_COMMAND="find . -type f -print"
+
+# Set a custom preview for files (e.g., using `bat` for syntax-highlighted previews)
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# Alias for searching and opening files
+alias fo="fzf | xargs -r vim"
+
+# Alias for searching directories
+alias fd="find . -type d | fzf"
+
+# Define default command to list directories and files together
+export FZF_DEFAULT_COMMAND='find . -type f -print -o -type d -print'
+
+# Ctrl + R for searching the command history
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window=down:3:wrap"
+
+# Ctrl + T to fuzzy search for files in the current directory and subdirectories
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Set colors for better visibility
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=dark,bg+:235,fg+:178,gutter:237"
