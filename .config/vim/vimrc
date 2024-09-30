@@ -63,7 +63,7 @@ set expandtab
 set autoindent
 
 # Plugins
-call plug#begin()
+call plug#begin('~/.config/vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'Yggdroot/indentLine'

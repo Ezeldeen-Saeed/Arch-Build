@@ -7,14 +7,14 @@ displays=$(xrandr --query | grep ' connected' | awk '{ print $1 }')
 selected_display=$(echo "$displays" | dmenu -i -p "Select display to record:")
 
 # Set the display variable for ffmpeg based on the selected display
-if [ "$selected_display" == "LVDS-1" ]; then
-    display=":0.0"  # LVDS-1 maps to :0.0
+if [ "$selected_display" == "LVDS1" ]; then
+    display=":0.0"  # LVDS1 maps to :0.0
     screen_resolution="1920x1080"
-    offset="+0,0"  # No offset for LVDS-1
-elif [ "$selected_display" == "VGA-1" ]; then
-    display=":0.0"  # VGA-1 still maps to :0.0
+    offset="+0,0"  # No offset for LVDS1
+elif [ "$selected_display" == "VGA1" ]; then
+    display=":0.0"  # VGA1 still maps to :0.0
     screen_resolution="1680x1050"
-    offset="+1930,0"  # Offset for VGA-1
+    offset="+1930,0"  # Offset for VGA1
 else
     echo "Invalid display selected."
     exit 1
