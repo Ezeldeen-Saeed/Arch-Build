@@ -72,12 +72,17 @@
         }
       ],
       "w": 23,
-      "h": 976
+      "h": 908
     },
     "floating": [],
-    "position": {},
+    "position": {
+      "x": 1940,
+      "y": 31,
+      "w": 912,
+      "h": 1007
+    },
     "autohide": true,
-    "fullscreen": true,
+    "fullscreen": false,
     "maximized": false
   },
   "input.button_mapping": {
@@ -447,5 +452,6 @@
     322
   ],
   "color_chooser.default.selected_adjuster": "HSVCubeTool",
-  "scratchpad.last_opened": "/home/ezooz/.local/share/mypaint/scratchpads/autosave.ora"
+  "scratchpad.last_opened": "/home/ezooz/.local/share/mypaint/scratchpads/autosave.ora",
+  "devbrush.last_used": "VEIKK Pen Pen (0)"
 }

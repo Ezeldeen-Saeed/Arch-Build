@@ -82,10 +82,16 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 g:maplocalleader = "."
 
 # Splits navigation
+set splitright
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <C-w> :wincmd K<CR>
+nnoremap <C-s> :wincmd J<CR>
+nnoremap <C-d> :wincmd L<CR>
+nnoremap <C-a> :wincmd H<CR>
 
 # Localleader key bindings
 nnoremap <localleader>w :w<CR>

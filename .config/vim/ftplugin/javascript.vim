@@ -3,7 +3,7 @@ vim9script
 def Run_NodeJS()
     wa!
 
-    below terminal node %:p 
+    vert term node %:p 
 
     set autoread
     redraw!
