@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Replace these IDs with the actual IDs of your touchpad and trackstick
-TOUCHPAD_ID=18
-TRACKSTICK_ID=19
+TOUCHPAD_ID=14
+TRACKSTICK_ID=15
 
 # Function to check if a device is enabled
 is_device_enabled() {

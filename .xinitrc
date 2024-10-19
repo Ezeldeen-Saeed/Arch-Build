@@ -5,4 +5,5 @@ sxhkd &
 slstatus &
 feh --bg-fill "$HOME/Pictures/Wallpapers/elliott-engelmann-DjlKxYFJlTc.jpg"
 dwm
-xinput disable 18 && xinput disable 19
+xinput disable 14 && xinput disable 15
+synclient tapbutton1=1

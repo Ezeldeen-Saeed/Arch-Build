@@ -15,12 +15,13 @@ scroll_right L C-Right
 remove     d   Delete
 delete   C-d C-Delete
 
-toggle_filenames f
+toggle_filenames F
 
 zoom_in  C-Up l
 zoom_out C-Down h
 zoom_default a
 zoom_fit s
+toggle_fullscreen f
 
 save_image
 save_filelist
