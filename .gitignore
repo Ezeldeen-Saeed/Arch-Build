@@ -60,3 +60,12 @@ files/
 .steampath
 .steampid
 .var/
+.vscode-oss/
+.wine32/
+.dreamchess/
+.config/unity3d/
+.config/chromium/
+.android/
+.Genymobile/
+.config/Genymobile/
+.config/menus/
