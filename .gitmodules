@@ -25,3 +25,6 @@
 [submodule ".config/vim/plugged/vim-snippets"]
 	path = .config/vim/plugged/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule ".config/vim/plugged/AutoComplPop"]
+	path = .config/vim/plugged/AutoComplPop
+	url = https://github.com/vim-scripts/AutoComplPop.git
