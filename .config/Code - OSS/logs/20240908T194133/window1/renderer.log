@@ -1,7 +1,0 @@
-2024-09-08 19:41:36.748 [info] Started local extension host with pid 5800.
-2024-09-08 19:41:41.550 [info] [perf] Render performance baseline is 69ms
-2024-09-08 19:41:48.404 [error] [text file model] handleSaveError(0) - exit - resulted in a save error: Error: Unable to write file '/home/ezooz/src/dwm/drw.c' (NoPermissions (FileSystemError): Error: EACCES: permission denied, open '/home/ezooz/src/dwm/drw.c') file:///home/ezooz/src/dwm/drw.c
-2024-09-08 19:41:48.412 [info] [lifecycle]: Shutdown was prevented by final veto (id: veto.backups)
-2024-09-08 19:42:00.500 [warning] [backup tracker] suspended, ignoring dirty change event file:///home/ezooz/src/dwm/drw.c 
-2024-09-08 19:42:01.625 [info] Started local extension host with pid 6639.
-2024-09-08 19:42:04.645 [info] [perf] Render performance baseline is 68ms

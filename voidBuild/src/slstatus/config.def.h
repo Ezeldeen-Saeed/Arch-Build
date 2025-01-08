@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 100;
+const unsigned int interval = 1000;
 
-const unsigned int cpu_interval = 1000;  // Update every 1000 milliseconds (1 second)
-const unsigned int ram_interval = 1000;  // Update every 1000 milliseconds (1 second)
+const unsigned int cpu_interval = 2000;  // Update every 1000 milliseconds (1 second)
+const unsigned int ram_interval = 2000;  // Update every 1000 milliseconds (1 second)
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -12,6 +12,8 @@ static const char unknown_str[] = "n/a";
 /* maximum output string length */
 #define MAXLEN 2048
 #define PADDING "                           "
+
+
 /*
  * function            description                     argument (example)
  *
@@ -74,5 +76,7 @@ static const struct arg args[] = {
     { battery_perc, "Battery: %s%% | ",  "BAT0" },
     { battery_state, "%s | ",  "BAT0" },
     { run_command, "Vol: %s | ", "amixer get Master | awk -F'[][]' 'END{ print $2 }'" },
-    { datetime, "%s", "%d-%m-%Y %I:%M %p" },
+    { datetime, "%s | ", "%I:%M  %a. %d %b. %Y" },
+	{ cpu_perc, "%s%% - ", NULL },
+    {run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
 };
