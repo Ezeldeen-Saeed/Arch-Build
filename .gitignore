@@ -5,17 +5,17 @@
 !.bash_profile
 !.xinitrc
 !.bashrc
-!.voidBuild/
-!.config/feh/
-!.config/fzf/
-!.config/loadkeys/
-!.config/mpv/
-!.config/nnn/
-!.config/sxhkd/
-!.config/tmux/
-!.config/vim/
-!.config/zathura/
-!.config/tmux/
+!.voidBuild/*
+!.config/feh/*
+!.config/fzf/*
+!.config/loadkeys/*
+!.config/mpv/*
+!.config/nnn/*
+!.config/sxhkd/*
+!.config/tmux/*
+!.config/vim/*
+!.config/zathura/*
+!.config/tmux/*
 
 
 *.tmp

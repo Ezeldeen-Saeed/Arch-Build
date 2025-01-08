@@ -1,5 +1,8 @@
 vim9script
 
+# Vim commentary
+filetype plugin indent on
+
 # Auto Closing Tag
 g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 g:closetag_emptyTags_caseSensitive = 1
@@ -64,15 +67,16 @@ set autoindent
 
 # Plugins
 call plug#begin('~/.config/vim/plugged')
-  Plug 'preservim/nerdtree'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'Yggdroot/indentLine'
-  Plug 'itchyny/lightline.vim'
-  Plug 'morhetz/gruvbox'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'alvan/vim-closetag'  
-  Plug 'junegunn/fzf.vim'
-  Plug 'honza/vim-snippets'
+    Plug 'preservim/nerdtree'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Yggdroot/indentLine'
+    Plug 'itchyny/lightline.vim'
+    Plug 'morhetz/gruvbox'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'alvan/vim-closetag'  
+    Plug 'junegunn/fzf.vim'
+    Plug 'honza/vim-snippets'
+    Plug 'tpope/vim-commentary'
 call plug#end()
 
 # NerdTree
