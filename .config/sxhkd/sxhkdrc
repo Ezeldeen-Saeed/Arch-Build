@@ -1,6 +1,9 @@
 super + Return
 	$TERMINAL
 
+super + z
+    firefox 
+
 super + w
 	$BROWSER
 
@@ -11,10 +14,28 @@ super + n
     $TERMINAL -e nnn
 
 super + f
-    $TERMINAL -e fzf
+    $TERMINAL -e sh -c 'xdg-open "$(fzf)"'
+
+super + v
+    $TERMINAL -e vim
+
+super + y
+    mpv $(xclip -o)
 
 super + m
     $HOME/voidBuild/bin/mount.sh
+
+super + t
+    telegram-desktop
+
+super + o
+    /opt/notion/./Notion
+
+super + F1 
+    sh $HOME/files/kaliVM/command
+
+super + F2
+    sh $HOME/files/WinVM/command
 
 # volume control
 XF86AudioRaiseVolume
@@ -24,7 +45,6 @@ XF86AudioLowerVolume
 XF86AudioMute
 	$HOME/voidBuild/bin/volume-control.sh mute
 
-
 super + shift + BackSpace
 	$HOME/voidBuild/bin/exit.sh
 
@@ -33,9 +53,6 @@ super + F5
 
 super + shift + P
 	$HOME/voidBuild/bin/monitor-control.sh
-
-super + shift + M
-	$HOME/voidBuild/bin/mount.sh
 
 Print
 	maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
