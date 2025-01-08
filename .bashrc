@@ -16,3 +16,5 @@ alias q='doas xbps-query -Rs'
 alias r='doas xbps-remove -R'
 
 set -o vi 
+export PATH="$HOME/.local/bin:$PATH"
+export CPLUS_INCLUDE_PATH=/usr/include/c++/13.2.0:/usr/local/include:$CPLUS_INCLUDE_PATH
