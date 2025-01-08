@@ -1,6 +1,7 @@
 *
 
 !.gitignore
+!.gitmodules
 !.bash_profile
 !.xinitrc
 !.bashrc
