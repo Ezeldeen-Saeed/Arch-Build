@@ -77,6 +77,6 @@ static const struct arg args[] = {
     { battery_state, "%s | ",  "BAT0" },
     { run_command, "Vol: %s | ", "amixer get Master | awk -F'[][]' 'END{ print $2 }'" },
     { datetime, "%s | ", "%I:%M  %a. %d %b. %Y" },
-	{ cpu_perc, "%s%% - ", NULL },
+	{ cpu_perc, "%02s%% - ", NULL },
     {run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
 };

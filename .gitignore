@@ -17,7 +17,6 @@
 !.config/zathura/*
 !.config/tmux/*
 
-
 *.tmp
 *.cache
 *.log
