@@ -6,7 +6,7 @@
 * st terminal
 * demenu
 * slstatus
-** And my configurations and patches. **
+**And my configurations and patches.**
 
 ## System files
 * .xinitrc
