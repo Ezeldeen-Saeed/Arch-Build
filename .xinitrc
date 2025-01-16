@@ -4,6 +4,8 @@ xrandr --output LVDS1 --pos -10x0
 synclient tapbutton1=1
 sxhkd &
 slstatus &
-feh --bg-fill "$HOME/Pictures/Wallpapers/Gruvbox/elliott-engelmann-DjlKxYFJlTc.jpg"
+feh --bg-fill "$HOME/Pictures/Wallpapers/Gruvbox/camera.png"
+$HOME/voidBuild/bin/battery-charging-notification.sh &
 dwm
+dunst &
 xinput disable 14 && xinput disable 15

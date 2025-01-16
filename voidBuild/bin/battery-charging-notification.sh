@@ -2,11 +2,7 @@
 
 # Minimum battery level
 THRESHOLD=20
-
-# Battery status path (adjust if needed)
 BATTERY_PATH="/sys/class/power_supply/BAT0"
-
-# Notification sound file
 SOUND="$HOME/Sounds/alert-sound.mp3"
 
 while true; do
@@ -15,17 +11,36 @@ while true; do
     # Check if the battery is discharging
     STATUS=$(cat "$BATTERY_PATH/status")
 
-    if [ "$BATTERY_LEVEL" -lt "$THRESHOLD" ] && [ "$STATUS" == "Discharging" ]; then
-        # Send a desktop notification
-        notify-send -u critical "Low Battery" "Battery level is at ${BATTERY_LEVEL}%!"
+    if [ "$BATTERY_LEVEL" -le "$THRESHOLD" ] && [ "$STATUS" == "Discharging" ]; then
+        # Get the current volume level and mute status
+        CURRENT_VOLUME=$(amixer get Master | grep -oP '[0-9]+(?=%)' | head -1)
+        IS_MUTED=$(amixer get Master | grep -oP '\[(on|off)\]' | head -1)
 
-        # Play a sound
+        # Unmute if muted
+        if [ "$IS_MUTED" == "[off]" ]; then
+            amixer sset Master unmute > /dev/null
+        fi
+
+        # Set volume to 100%
+        amixer sset Master 100% > /dev/null
+
+        # Show notification and play sound
+
+        for DISPLAY in $(xrandr --listmonitors | awk '{print $2}' | sed 's/[^a-zA-Z0-9]//g'); do
+            export DISPLAY=$DISPLAY
+            notify-send -u critical "Low Battery" "Battery level is at ${BATTERY_LEVEL}%!"
+        done
+        
         paplay "$SOUND"
 
-        # Wait for 5 minutes before checking again
-        sleep 300
-    else
-        # Check every 10 seconds
-        sleep 10
+        # Restore the previous volume and mute state
+        amixer sset Master "${CURRENT_VOLUME}%" > /dev/null
+        if [ "$IS_MUTED" == "[off]" ]; then
+            amixer sset Master mute > /dev/null
+        fi
+
     fi
+
+    # Sleep for 2 minutes before checking again
+    sleep 120
 done
