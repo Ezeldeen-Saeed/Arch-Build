@@ -10,11 +10,10 @@ PS1='[\u@\h \W]\$ '
 alias ll='ls -l'
 
 # xbps
-alias i='doas xbps-install -S'
-alias u='i; doas xbps-install -u xbps; doas xbps-install -u'
-alias q='doas xbps-query -Rs'
-alias r='doas xbps-remove -R'
+alias i='doas pacman -S'
+alias u='i; doas pacman -U pacman; doas pacman -U'
+alias q='doas pacman -Q'
+alias r='doas pacman -R'
 
 set -o vi 
 export PATH="$HOME/.local/bin:$PATH"
-export CPLUS_INCLUDE_PATH=/usr/include/c++/13.2.0:/usr/local/include:$CPLUS_INCLUDE_PATH

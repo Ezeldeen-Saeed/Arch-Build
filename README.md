@@ -1,4 +1,4 @@
-# My Void Build Repo
+# My Arch Build Repo
 ## Desktop Environment
 ### Suckless tools
 * Dwm window manager
