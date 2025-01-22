@@ -6,7 +6,7 @@
 
 doas loadkeys .config/loadkeys/loadkeysrc
 
-export BROWSER="chromium"
+export BROWSER="firefox"
 export TERMINAL="st"
 export TERM="st"
 export EDITOR="vim"

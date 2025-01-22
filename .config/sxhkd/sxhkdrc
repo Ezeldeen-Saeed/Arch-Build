@@ -2,7 +2,7 @@ super + Return
 	$TERMINAL
 
 super + z
-    firefox 
+    chromium 
 
 super + w
 	$BROWSER
@@ -23,13 +23,13 @@ super + y
     mpv $(xclip -o)
 
 super + m
-    $HOME/voidBuild/bin/mount.sh
+    $HOME/archBuild/bin/mount.sh
 
 super + t
     telegram-desktop
 
 super + o
-    /opt/notion/./Notion
+    notion-app 
 
 super + F1 
     sh $HOME/files/kaliVM/command
@@ -39,20 +39,20 @@ super + F2
 
 # volume control
 XF86AudioRaiseVolume
-	$HOME/voidBuild/bin/volume-control.sh up
+	$HOME/archBuild/bin/volume-control.sh up
 XF86AudioLowerVolume
-	$HOME/voidBuild/bin/volume-control.sh down
+	$HOME/archBuild/bin/volume-control.sh down
 XF86AudioMute
-	$HOME/voidBuild/bin/volume-control.sh mute
+	$HOME/archBuild/bin/volume-control.sh mute
 
 super + shift + BackSpace
-	$HOME/voidBuild/bin/exit.sh
+	$HOME/archBuild/bin/exit.sh
 
 super + F5
-	$HOME/voidBuild/bin/toggle-touchpad-trackstick.sh
+	$HOME/archBuild/bin/toggle-touchpad-trackstick.sh
 
 super + shift + P
-	$HOME/voidBuild/bin/monitor-control.sh
+	$HOME/archBuild/bin/monitor-control.sh
 
 Print
 	maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
@@ -64,4 +64,4 @@ ctrl + shift + Print
     maim -s $HOME/Pictures/Screenshots/screenshot_$(date +'%Y%m%d_%H%M%S').png
 
 super + shift + R
-    $HOME/voidBuild/bin/record-screen.sh
+    $HOME/archBuild/bin/record-screen.sh
