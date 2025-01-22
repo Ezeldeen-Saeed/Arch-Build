@@ -75,8 +75,10 @@ static const struct arg args[] = {
     /* function format               argument */
     { battery_perc, "Battery: %s%% | ",  "BAT0" },
     { battery_state, "%s | ",  "BAT0" },
-    { run_command, "Vol: %s | ", "amixer get Master | awk -F'[][]' 'END{ print $2 }'" },
-    { datetime, "%s | ", "%I:%M  %a. %d %b. %Y" },
+    { run_command, "Vol: %s | ", "pactl list sinks | grep 'Volume' | awk '{print $5}' | head -n 1" },
+    { wifi_essid, "[ %s", "wlan0" },
+    { wifi_perc, " %s%% ] | ", "wlan0" },
+    { datetime, "%s | ", "%I:%M %p ➡️ %a. %d %b. %Y" },
 	{ cpu_perc, "%02s%% - ", NULL },
     {run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
 };

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the base directory for mounts
-MOUNT_DIR="$HOME/drives"
+MOUNT_DIR="/mnt"
 
 # Create the base directory if it does not exist
 mkdir -p "$MOUNT_DIR"

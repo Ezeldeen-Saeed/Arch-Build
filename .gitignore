@@ -5,7 +5,7 @@
 !.bash_profile
 !.xinitrc
 !.bashrc
-!.voidBuild/*
+!.archBuild/*
 !.config/feh/*
 !.config/fzf/*
 !.config/loadkeys/*

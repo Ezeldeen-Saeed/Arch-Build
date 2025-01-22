@@ -1,6 +1,8 @@
 #!/bin/sh
 
-choice=$(echo "Shutdown\nReboot\nExit" | dmenu)
+choice=$(echo "Shutdown
+Reboot
+Exit" | dmenu)
 
 [ $choice = "Shutdown" ] && doas poweroff
 [ $choice = "Reboot" ] && doas reboot
