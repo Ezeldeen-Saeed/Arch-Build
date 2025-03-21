@@ -4,7 +4,7 @@
 MOUNT_DIR="/mnt"
 
 # Create the base directory if it does not exist
-mkdir -p "$MOUNT_DIR"
+sudo mkdir -p "$MOUNT_DIR"
 
 # Get a list of external drives with partitions
 DRIVES=$(lsblk -l | grep -E '^sd[a-z][0-9]*' | awk '{print $1}' | sort)
@@ -39,12 +39,12 @@ MOUNT_POINT="$MOUNT_DIR/$LABEL-$UUID"
 # Check if the device is already mounted
 if mountpoint -q "$MOUNT_POINT"; then
     echo "Unmounting $DEVICE from $MOUNT_POINT"
-    doas umount "$MOUNT_POINT"
+    sudo umount "$MOUNT_POINT"
     
     # Check if the unmount was successful
     if [ $? -eq 0 ]; then
         echo "Drive unmounted successfully"
-        rmdir "$MOUNT_POINT"
+        sudo rmdir "$MOUNT_POINT"
         echo "Removed mount point directory $MOUNT_POINT"
     else
         echo "Failed to unmount drive"
@@ -52,7 +52,7 @@ if mountpoint -q "$MOUNT_POINT"; then
     fi
 else
     # Create the mount point directory if it does not exist
-    mkdir -p "$MOUNT_POINT"
+    sudo mkdir -p "$MOUNT_POINT"
 
     # Determine the filesystem type
     FILESYSTEM_TYPE=$(blkid -o value -s TYPE "$DEVICE")
@@ -64,18 +64,20 @@ else
     elif [ "$FILESYSTEM_TYPE" == "ntfs" ]; then
         # Use ntfs-3g driver for NTFS partitions
         FILESYSTEM_TYPE="ntfs-3g"
+    elif [ "$FILESYSTEM_TYPE" == "ext4" ]; then
+        FILESYSTEM_TYPE="ext4"
     fi
 
     # Attempt to mount the selected partition with the detected filesystem type
     echo "Mounting $DEVICE to $MOUNT_POINT with filesystem type $FILESYSTEM_TYPE"
-    doas mount -t "$FILESYSTEM_TYPE" "$DEVICE" "$MOUNT_POINT"
+    sudo mount -t "$FILESYSTEM_TYPE" "$DEVICE" "$MOUNT_POINT"
 
     # Check if the mount was successful
     if mountpoint -q "$MOUNT_POINT"; then
         echo "Drive mounted successfully at $MOUNT_POINT"
     else
         echo "Failed to mount drive"
-        rmdir "$MOUNT_POINT"
+        sudo rmdir "$MOUNT_POINT"
         exit 1
     fi
 
@@ -86,8 +88,9 @@ else
             echo "Entry already exists in /etc/fstab"
         else
             echo "Adding entry to /etc/fstab"
-            echo "UUID=$UUID $MOUNT_POINT $FILESYSTEM_TYPE defaults 0 0" | doas tee -a /etc/fstab
+            echo "UUID=$UUID $MOUNT_POINT $FILESYSTEM_TYPE defaults 0 0" | sudo tee -a /etc/fstab
             echo "Updated /etc/fstab"
+            sudo systemctl daemon-reload
         fi
     else
         echo "Skipping /etc/fstab update"

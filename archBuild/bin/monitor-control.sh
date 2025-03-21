@@ -52,7 +52,7 @@ extend_monitors() {
 
 # Show options using dmenu for the main choice
 show_options() {
-    echo -e "Extend\nDuplicate" | dmenu -p "Select display mode:"
+    echo -e "Extend\nDuplicate\nOnly Primary\nOnly Secondary" | dmenu -p "Select display mode:"
 }
 
 # Show position options using dmenu for extending
@@ -87,7 +87,14 @@ case "$selected_option" in
         fi
         extend_monitors "$primary_monitor" "$secondary_monitor" "$extend_position"
         ;;
+    "Only Primary")
+        xrandr --output "$primary_monitor" --auto --output "$secondary_monitor" --off
+        ;;
+    "Only Secondary")
+        xrandr --output "$primary_monitor" --off --output "$secondary_monitor" --auto
+        ;;
     *)
+
         echo "No valid option selected or canceled."
         ;;
 esac

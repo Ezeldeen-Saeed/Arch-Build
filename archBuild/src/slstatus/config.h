@@ -77,7 +77,7 @@ static const struct arg args[] = {
     { battery_state, "%s | ",  "BAT0" },
     { run_command, "Vol: %s | ", "pactl list sinks | grep 'Volume' | awk '{print $5}' | head -n 1" },
     { wifi_essid, "[ %s", "wlan0" },
-    { wifi_perc, " %s%% ] | ", "wlan0" },
+    { wifi_perc, " %02s%% ] | ", "wlan0" },
     { datetime, "%s | ", "%I:%M %p ➡️ %a. %d %b. %Y" },
 	{ cpu_perc, "%02s%% - ", NULL },
     {run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
