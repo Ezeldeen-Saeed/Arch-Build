@@ -28,9 +28,6 @@ super + m
 super + t
     telegram-desktop
 
-super + o
-    notion-app 
-
 super + F1 
     sh $HOME/files/kaliVM/command
 
@@ -65,3 +62,6 @@ ctrl + shift + Print
 
 super + shift + R
     $HOME/archBuild/bin/record-screen.sh
+
+super + BackSpace
+    betterlockscreen -l blur
