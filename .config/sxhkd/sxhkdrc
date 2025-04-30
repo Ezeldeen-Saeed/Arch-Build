@@ -22,6 +22,12 @@ super + v
 super + y
     mpv $(xclip -o)
 
+super + shift + n
+    $HOME/archBuild/bin/wifi-connect.sh
+
+super + shift + o
+    $HOME/archBuild/bin/bluetooth.sh
+
 super + m
     $HOME/archBuild/bin/mount.sh
 

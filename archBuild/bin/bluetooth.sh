@@ -1,81 +1,126 @@
 #!/bin/bash
 
-# Function to power on Bluetooth and start scanning
-enable_bluetooth_and_scan() {
-    bluetoothctl power on || { echo "Failed to power on Bluetooth."; exit 1; }
-    bluetoothctl agent NoInputNoOutput || { echo "Failed to register agent."; exit 1; }
-    bluetoothctl discoverable on || { echo "Failed to make device discoverable."; exit 1; }
-    bluetoothctl scan on || { echo "Failed to start scanning."; exit 1; }
-    echo "Scanning for devices... Please wait."
-    sleep 10
+SUCCESS_SOUND="$HOME/Music/Sounds/success.mp3"
+FAIL_SOUND="$HOME/Music/Sounds/fails.mp3"
+
+
+adjust_volume_and_play() {
+    local sound_file="$1"
+    
+    # List all sinks and filter out the running ones
+    local sinks
+    sinks=$(pactl list short sinks | grep RUNNING | awk '{print $1}')
+    
+    # If no running sink, exit
+    [ -z "$sinks" ] && return
+
+    # Loop through all running sinks
+    for sink in $sinks; do
+        # Get current mute and volume state of the sink
+        local current_mute
+        current_mute=$(pactl get-sink-mute "$sink" | awk '{print $2}')
+        local current_volume
+        current_volume=$(pactl get-sink-volume "$sink" | grep -oP '\d+%' | head -1)
+
+        # If the sink is muted or volume is below 50%, unmute and set to 100% before playing the sound
+        if [ "$current_mute" = "yes" ] || [ "${current_volume%\%}" -lt 50 ]; then
+            # Save the current volume and mute state
+            pactl set-sink-mute "$sink" 0
+            pactl set-sink-volume "$sink" 100%
+
+            # Play the sound at max volume
+            paplay "$sound_file"
+
+            # Restore the original volume and mute state
+            pactl set-sink-volume "$sink" "$current_volume"
+            [ "$current_mute" = "yes" ] && pactl set-sink-mute "$sink" 1
+        else
+            # If the volume is fine and it's not muted, just play the sound
+            paplay "$sound_file"
+        fi
+    done
 }
 
-# Function to get a list of discovered devices
-get_discovered_devices() {
-    devices=$(bluetoothctl devices | awk '{print $2 " " substr($0, index($0,$3))}')
-    bluetoothctl scan off || { echo "Failed to stop scanning."; exit 1; }
-    echo "$devices"
-}
+# Power on Bluetooth and reset any existing filters
+bluetoothctl power on &>/dev/null
+sleep 1
 
-# Function to get a list of connected devices
-get_connected_devices() {
-    connected_devices=$(bluetoothctl devices | grep "Connected" | awk '{print $2 " " substr($0, index($0,$3))}')
-    echo "$connected_devices"
-}
+# Reset any existing filter by disabling discovery filters
+bluetoothctl scan on &>/dev/null
+sleep 2
 
-# Function to pair, trust, and connect to the selected device
-pair_and_connect() {
-    local device="$1"
-    bluetoothctl pair "$device" || { echo "Failed to pair with $device."; exit 1; }
-    bluetoothctl trust "$device" || { echo "Failed to trust $device."; exit 1; }
-    bluetoothctl connect "$device" || { echo "Failed to connect to $device."; exit 1; }
-    echo "Successfully connected to $device."
-}
+# Check if Bluetooth adapter exists
+bluetoothctl list &>/dev/null
+if [ $? -ne 0 ]; then
+    notify-send -u critical "Bluetooth Adapter Not Found"
+    adjust_volume_and_play "$FAIL_SOUND"
+    exit 1
+fi
 
-# Function to disconnect from a Bluetooth device
-disconnect_from_device() {
-    local device="$1"
-    bluetoothctl disconnect "$device" || { echo "Failed to disconnect from $device."; exit 1; }
-    echo "Disconnected from $device."
-}
+# Get list of available devices
+mapfile -t devices < <(bluetoothctl devices | awk '{$1=""; print substr($0,2)}')
 
-# Function to disable Bluetooth
-disable_bluetooth() {
-    bluetoothctl power off || { echo "Failed to power off Bluetooth."; exit 1; }
-}
+if [ "${#devices[@]}" -eq 0 ]; then
+    notify-send -u critical "No Bluetooth Devices Found"
+    adjust_volume_and_play "$FAIL_SOUND"
+    exit 1
+fi
 
-# Function to display menu options using dmenu
-display_menu() {
-    local options=("Connect" "Disconnect" "Disable" "Exit")
-    local selected_option=$(printf "%s\n" "${options[@]}" | dmenu -i -p "Bluetooth Menu:")
+# Pick a device
+selection=$(printf "%s\n" "${devices[@]}" | rofi -dmenu -theme ~/.config/rofi/gruvbox.rasi -p "Select Bluetooth Device")
+[ -z "$selection" ] && exit
 
-    case "$selected_option" in
-        "Connect")
-            enable_bluetooth_and_scan
-            selected_device=$(get_discovered_devices | dmenu -i -p "Select Bluetooth device to connect:")
-            if [[ ! -z "$selected_device" ]]; then
-                pair_and_connect "$selected_device"
-            fi
-            ;;
-        "Disconnect")
-            connected_devices=$(get_connected_devices)
-            if [[ -z "$connected_devices" ]]; then
-                echo "No connected devices found."
-            else
-                selected_device=$(echo "$connected_devices" | dmenu -i -p "Select Bluetooth device to disconnect:")
-                if [[ ! -z "$selected_device" ]]; then
-                    disconnect_from_device "$selected_device"
-                fi
-            fi
-            ;;
-        "Disable")
-            disable_bluetooth
-            ;;
-        "Exit")
-            exit 0
-            ;;
-    esac
-}
+mac=$(bluetoothctl devices | grep "$selection" | awk '{print $2}')
+name="$selection"
 
-# Main script
-display_menu
+# Check if the device is already connected
+if bluetoothctl info "$mac" | grep -q "Connected: yes"; then
+    bluetoothctl disconnect "$mac" &>/dev/null
+    notify-send "📴 Disconnected" "$name disconnected"
+    adjust_volume_and_play "$SUCCESS_SOUND"
+    exit
+fi
+
+# If device is already paired, just connect
+if bluetoothctl paired-devices | grep -q "$mac"; then
+    # Device is paired, try to connect
+    if bluetoothctl connect "$mac" &>/dev/null; then
+        notify-send "🔊 Connected" "Connected to '$name'"
+        adjust_volume_and_play "$SUCCESS_SOUND"
+        exit
+    else
+        notify-send -u critical -i dialog-warning "❌ Connection Failed" "Could not connect to '$name'"
+        adjust_volume_and_play "$FAIL_SOUND"
+        exit 1
+    fi
+fi
+
+# Try trusting, pairing, and connecting
+bluetoothctl trust "$mac" &>/dev/null
+sleep 1
+if ! bluetoothctl pair "$mac" &>/dev/null; then
+    # Attempt workaround for stubborn devices like AirPods
+    bluetoothctl remove "$mac" &>/dev/null
+    sleep 1
+    bluetoothctl scan on &>/dev/null
+    sleep 2
+    bluetoothctl scan off &>/dev/null
+    bluetoothctl trust "$mac" &>/dev/null
+    sleep 1
+    if ! bluetoothctl pair "$mac" &>/dev/null; then
+        notify-send -u critical -i dialog-warning "❌ Pairing Failed" "Could not pair with '$name'. Try manual pairing."
+        adjust_volume_and_play "$FAIL_SOUND"
+        exit 1
+    fi
+fi
+
+# Try connecting after successful pairing
+if bluetoothctl connect "$mac" &>/dev/null; then
+    notify-send "🔊 Connected" "Connected to '$name'"
+    adjust_volume_and_play "$SUCCESS_SOUND"
+else
+    notify-send -u critical -i dialog-warning "❌ Connection Failed" "Could not connect to '$name'"
+    adjust_volume_and_play "$FAIL_SOUND"
+fi
+
+bluetoothctl scan off &>/dev/null

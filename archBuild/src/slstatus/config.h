@@ -73,12 +73,37 @@ static const char unknown_str[] = "n/a";
 
 static const struct arg args[] = {
     /* function format               argument */
-    { battery_perc, "Battery: %s%% | ",  "BAT0" },
-    { battery_state, "%s | ",  "BAT0" },
-    { run_command, "Vol: %s | ", "pactl list sinks | grep 'Volume' | awk '{print $5}' | head -n 1" },
-    { wifi_essid, "[ %s", "wlan0" },
-    { wifi_perc, " %02s%% ] | ", "wlan0" },
-    { datetime, "%s | ", "%I:%M %p ➡️ %a. %d %b. %Y" },
-	{ cpu_perc, "%02s%% - ", NULL },
-    {run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
+    { run_command, "%s | ", "perc=$(cat /sys/class/power_supply/BAT0/capacity); \
+      status=$(cat /sys/class/power_supply/BAT0/status); \
+      if [ \"$status\" = 'Charging' ]; then icon=' '; \
+      elif [ \"$perc\" -ge 90 ]; then icon=' '; \
+      elif [ \"$perc\" -ge 70 ]; then icon=' '; \
+      elif [ \"$perc\" -ge 50 ]; then icon=' '; \
+      elif [ \"$perc\" -ge 25 ]; then icon=' '; \
+      else icon=' '; fi; echo \"$icon $perc%\"" },
+
+    { run_command, "%s | ", "vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -n 1 | tr -d '%'); \
+      if [ \"$vol\" -ge 70 ]; then icon=' '; \
+      elif [ \"$vol\" -ge 30 ]; then icon=' '; \
+      else icon=' '; fi; echo \"$icon $vol%\"" },
+
+{ run_command, "%s | ", "(essid=$(iw dev wlan0 link | grep SSID | awk '{print $2}'); \
+   perc=$(iw dev wlan0 link | grep signal | awk '{print $2}'); \
+   if [ -z \"$essid\" ]; then \
+      echo 'No WiFi'; \
+   elif [ \"$perc\" -ge -50 ]; then \
+      icon='󰤢 '; \
+   elif [ \"$perc\" -ge -70 ]; then \
+      icon='󰤥 '; \
+   elif [ \"$perc\" -ge -90 ]; then \
+      icon='󰤨 '; \
+   else \
+      icon='󰤟 '; \
+   fi; \
+   echo \"$icon $essid\"; )" },
+
+
+    { datetime, "%s | ", " %I:%M %p ➡️  %a. %d %b" },
+    { cpu_perc, " %02s%% - ", NULL },
+    { run_command, "CPU: %s", "sensors | awk '/^CPU/ {print $2}'"},
 };

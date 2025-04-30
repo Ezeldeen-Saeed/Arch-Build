@@ -16,6 +16,9 @@
 !.config/vim/*
 !.config/zathura/*
 !.config/tmux/*
+!.config/btop/*
+
+!postins.sh
 
 *.tmp
 *.cache
