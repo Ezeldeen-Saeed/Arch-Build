@@ -1,0 +1,82 @@
+* {
+  font: "JetBrains Mono 10";
+  background: #282828;
+  foreground: #ebdbb2;
+  border-color: #3c3836;
+  selected-background: #458588;
+  selected-foreground: #ebdbb2;
+  alternate-background: #3c3836;
+  active-background: #b16286;
+  active-foreground: #fbf1c7;
+  urgent-background: #cc241d;
+  urgent-foreground: #fbf1c7;
+  border: 2px;
+  padding: 5px;
+  margin: 0;
+}
+
+window {
+  background-color: @background;
+  border: @border;
+  border-color: @border-color;
+  padding: 10px;
+}
+
+mainbox {
+  background-color: @background;
+  border: 0;
+  padding: 0;
+}
+
+prompt {
+  background-color: @background;
+  text-color: @foreground;
+}
+
+entry {
+  background-color: @background;
+  text-color: @foreground;
+  padding: 5px;
+}
+
+listview {
+  background-color: @background;
+  lines: 10;
+  columns: 1;
+  spacing: 2;
+  scrollbar: true;
+  fixed-height: true;
+}
+
+element {
+  background-color: @background;
+  text-color: @foreground;
+  padding: 5px;
+}
+
+element selected {
+  background-color: @selected-background;
+  text-color: @selected-foreground;
+}
+
+element alternate {
+  background-color: @alternate-background;
+}
+
+element urgent {
+  background-color: @urgent-background;
+  text-color: @urgent-foreground;
+}
+
+element active {
+  background-color: @active-background;
+  text-color: @active-foreground;
+}
+
+scrollbar {
+  width: 6px;
+  padding: 0;
+  handle-color: @selected-background;
+  handle-width: 6px;
+}
+

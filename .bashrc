@@ -20,3 +20,4 @@ set -o vi
 export PATH="$HOME/.local/bin:$PATH"
 export IDEA_JDK=/usr/lib/jvm/java-17-openjdk/
 export PATH=$JAVA_HOME/bin:$PATH
+export NNN_OPTS="-e UTF-8"
