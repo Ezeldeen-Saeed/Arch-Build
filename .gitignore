@@ -17,6 +17,7 @@
 !.config/zathura/*
 !.config/tmux/*
 !.config/btop/*
+!.config/rofi/*
 
 !postins.sh
 
