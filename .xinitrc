@@ -5,6 +5,6 @@ synclient tapbutton1=1
 sxhkd &
 slstatus &
 /usr/lib/vktablet/vktablet &
-feh --bg-fill "$HOME/Pictures/Wallpapers/gruvbox/wall2.jpg"
+feh --bg-fill "$HOME/Pictures/Wallpapers/gruvbox/wall5.jpg"
 dunst &
 dwm
