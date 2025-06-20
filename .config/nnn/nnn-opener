@@ -4,7 +4,7 @@ case "$1" in
     *.jpg|*.jpeg|*.png|*.bmp|*.tiff|*.webp|*.avif)
         feh --fullscreen --filename "$1" --info "basename %n" --draw-filename --auto-zoom --scale-down --image-bg black --sort filename --start-at "$1" . ;;
 
-    *.mp4|*.mkv|*.webm|*.avi|*.mov|*.flv|*.gif)
+    *.mp4|*.mkv|*.webm|*.avi|*.mov|*.flv|*.gif|*.wav)
         mpv --fullscreen --loop --input-conf=~/.config/mpv/input.conf -- "$1" ;; 
 
     *.txt|*.md|*.c|*.cpp|*.py|*.sh|*.json|*.html|*.css|*.js|*.xml|*.gd)

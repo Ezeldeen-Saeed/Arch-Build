@@ -22,6 +22,9 @@ super + v
 super + y
     mpv $(xclip -o)
 
+super + shift + y
+    mpv --no-video --force-window --idle $(xclip -o)
+
 super + shift + n
     $HOME/archBuild/bin/wifi-connect.sh
 
@@ -32,7 +35,7 @@ super + m
     $HOME/archBuild/bin/mount.sh
 
 super + t
-    telegram-desktop
+    Telegram
 
 super + F1 
     sh $HOME/files/kaliVM/command
