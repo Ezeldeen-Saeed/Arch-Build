@@ -20,3 +20,7 @@ set -o vi
 export PATH="$HOME/.local/bin:$PATH"
 export IDEA_JDK=/usr/lib/jvm/java-17-openjdk/
 export PATH=$JAVA_HOME/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
